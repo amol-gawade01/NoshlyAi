@@ -12,17 +12,13 @@ const foodSchema = mongoose.Schema({
     foodQuantity:{
          type:String,
             required:true,
-            unique:true,
             lowercase:true,
             trim:true,
 
     },
     foodExpiryDate:{
-         type:String,
+         type:Date,
             required:true,
-            unique:true,
-            lowercase:true,
-            trim:true,
          
     }
 })
