@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; img-src 'self' https://noshly-21nwt9kb3-amols-projects-75a0fc81.vercel.app; script-src 'self'; style-src 'self';"
+        }
+      ]
+    }
+  ]
+}
