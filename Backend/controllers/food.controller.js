@@ -17,6 +17,7 @@ const foodEntry = asyncHandler(async (req, res, next) => {
     foodName,
     foodQuantity,
     foodExpiryDate,
+    user: req.user._id,
   });
 
   if (!food) {
@@ -29,6 +30,7 @@ const foodEntry = asyncHandler(async (req, res, next) => {
 });
 
 const getFoodDetails = asyncHandler(async (req, res, next) => {
+    const userId = req.user._id
   try {
     const today = new Date();
 today.setHours(0, 0, 0, 0); // start of today
@@ -40,8 +42,9 @@ startThreshold.setHours(0, 0, 0, 0); // start of that day
 const endThreshold = new Date(startThreshold);
 endThreshold.setHours(23, 59, 59, 999); // end of that day
 
-    const totalFoods = await Food.countDocuments();
+    const totalFoods = await Food.countDocuments({user: userId});
     const expiringSoon = await Food.countDocuments({
+        user: userId,
   foodExpiryDate: { $gte: startThreshold, $lte: endThreshold },
 });
 

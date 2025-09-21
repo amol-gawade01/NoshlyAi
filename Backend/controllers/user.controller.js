@@ -63,6 +63,7 @@ const loginUser = asyncHandler(async (req, res, next) => {
 
   return res
     .status(201)
+    .setHeader('token',token)
     .cookie("token",token,options)
     .json(new ApiResponse(200, {user,token}, "User login Successfully"));
 
